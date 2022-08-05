@@ -1,87 +1,94 @@
-const string = `3|d---d-d---d-d---d-d-d-d-d-|
+// const string = `3|d---d-d---d-d---d-d-d-d-d-|
 
-3|--d-d---d-d---d-d---c-d---|
-2|------------------a-------|
+// 3|--d-d---d-d---d-d---c-d---|
+// 2|------------------a-------|
 
-3|d---d-e-f---f---f-g-e---e-|
+// 3|d---d-e-f---f---f-g-e---e-|
 
-3|--d-c-c-d-------c-d---d---|
-2|--------------a-----------|
+// 3|--d-c-c-d-------c-d---d---|
+// 2|--------------a-----------|
 
-3|d-e-f---f---f-g-e---e---d-|
+// 3|d-e-f---f---f-g-e---e---d-|
 
-3|c-d---------c-d---d---d-f-|
-2|----------a---------------|
+// 3|c-d---------c-d---d---d-f-|
+// 2|----------a---------------|
 
-3|g---g---g-a-A---A---a-g-a-|
+// 3|g---g---g-a-A---A---a-g-a-|
 
-3|d-----d-e-f---f---g---a-d-|
+// 3|d-----d-e-f---f---g---a-d-|
 
-3|----e-f-e---e---f-d-e-----|
+// 3|----e-f-e---e---f-d-e-----|
 
-4|----c-d---d---d-e-f---f---|
-3|--a-----------------------|
+// 4|----c-d---d---d-e-f---f---|
+// 3|--a-----------------------|
 
-4|f-g-e---e---d-c-c-d-------|
-3|------------------------a-|
+// 4|f-g-e---e---d-c-c-d-------|
+// 3|------------------------a-|
 
-4|c-d---d---d-e-f---f---f-g-|
+// 4|c-d---d---d-e-f---f---f-g-|
 
-4|e---e---d-c-d---------c-d-|
-3|--------------------a-----|
+// 4|e---e---d-c-d---------c-d-|
+// 3|--------------------a-----|
 
-4|--d---d-f-g---g---g-a-A---|
+// 4|--d---d-f-g---g---g-a-A---|
 
-4|A---a-g-a-d-----d-e-f---f-|
+// 4|A---a-g-a-d-----d-e-f---f-|
 
-4|--g---a-d-----e-f-e---e---|
+// 4|--g---a-d-----e-f-e---e---|
 
-4|d-c-d---e---f---a---------|
+// 4|d-c-d---e---f---a---------|
 
-4|f-d-----------A---------f-|
-3|----a---------------------|
+// 4|f-d-----------A---------f-|
+// 3|----a---------------------|
 
-4|d-------------------------|
-3|--A---------A-A---a-a---A-|
+// 4|d-------------------------|
+// 3|--A---------A-A---a-a---A-|
 
-3|A-----f-g-a---a---a---A-a-|
+// 3|A-----f-g-a---a---a---A-a-|
 
-3|--------g---g---g---g-a---|
+// 3|--------g---g---g---g-a---|
 
-3|------a---a---a---A-a-----|
+// 3|------a---a---a---A-a-----|
 
-3|----g---f---e---d-------d-|
+// 3|----g---f---e---d-------d-|
 
-3|e-f-----g-a---g---f---e---|
+// 3|e-f-----g-a---g---f---e---|
 
-3|f-----g-a---g-------f-g-a-|
+// 3|f-----g-a---g-------f-g-a-|
 
-3|----g-f---e---f---e---d---|
+// 3|----g-f---e---f---e---d---|
 
-3|--e-c---d-------d-e-f-----|
+// 3|--e-c---d-------d-e-f-----|
 
-3|e-f---g---f---g---a---g---|
+// 3|e-f---g---f---g---a---g---|
 
-3|f---d-------d-e-f---g---a-|
+// 3|f---d-------d-e-f---g---a-|
 
-3|--A---d---g---f---g---f---|
+// 3|--A---d---g---f---g---f---|
 
-3|e-----f-e---a-----------A-|
+// 3|e-----f-e---a-----------A-|
 
-3|----------a---a---a---a-g-|
+// 3|----------a---a---a---a-g-|
 
-3|--------g-----------f-----|
+// 3|--------g-----------f-----|
 
-3|------e---f---e---e-d-----|
+// 3|------e---f---e---e-d-----|
 
-3|----a-----------A---------|
+// 3|----a-----------A---------|
 
-4|----------c---------------|
-3|--a---a-------a-g---------|
+// 4|----------c---------------|
+// 3|--a---a-------a-g---------|
 
-3|g-----------f-----------e-|
+// 3|g-----------f-----------e-|
 
-3|--f---e---d---------------|`
+// 3|--f---e---d---------------|`
+
+const string = `
+5|-----------------c---c---c|
+4|---------A----------------|
+4|-----f---d---g-g--------b-|
+4|---------f----------------|
+3|---f-G-f------------------|`;
 
 /*
 Input will look like this
@@ -96,23 +103,30 @@ const result = string
   .trim()
   .split('\n\n')
   .map(noteLine => {
-    // If notes on the same line don't have the same octave, this line will be split into two lines. We need to merge them into one.
+    // If notes on the same line don't have the same octave, this line will be split into multiple lines. We need to merge them into one.
     if (noteLine.includes('\n')) {
-      const bothLines = noteLine.split('\n');
-      const secondLineOctave = bothLines[1][0];
-      // We find all letters
-      const allNotes = [...bothLines[1].matchAll(/[a-zA-Z]/g)];
+      noteLine = noteLine.split('\n').reduce((currentLine, nextLine) => {
+        const secondLineOctave = nextLine[0];
 
-      allNotes.forEach(match => {
-        bothLines[0] = bothLines[0].split('');
-        // We replace the dash on the first line with the note and its octave
-        bothLines[0][match['index']] = match[0] + secondLineOctave;
-        bothLines[0] = bothLines[0].join('');
+        // We find all letters
+        const allNotes = [...nextLine.matchAll(/[a-zA-Z]/g)];
+        console.log(currentLine);
+        console.log(nextLine);
+
+        allNotes.forEach(match => {
+          currentLine = currentLine.split('');
+          // We replace the dash on the first line with the note and its octave
+          currentLine[match['index'] + (currentLine.length - nextLine.length)] = match[0] + secondLineOctave;
+          currentLine = currentLine.join('');
+        });
+        console.log(currentLine);
+        console.log('\n');
+
+        return currentLine;
       });
-
-      noteLine = bothLines[0];
     }
 
+    console.log(noteLine);
     return noteLine;
   })
   .join('')
@@ -142,10 +156,6 @@ const result = string
 
     const noteAndOctave = fullNote.slice(0, 2);
     const beat = fullNote.slice(2).length;
-
-    if (beat === 0) {
-      console.log(fullNote);
-    }
 
     // Lowercase notes are regular notes and uppercase notes are sharp notes.
     // Sharp notes add a # between their letter and their octave
