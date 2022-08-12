@@ -1,0 +1,13 @@
+.emphasize {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.link {
+    color: var(--color-secondary);
+    transition: color .3s;
+}
+
+.link:hover {
+    color: var(--color-primary);
+}

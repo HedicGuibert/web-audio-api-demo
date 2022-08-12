@@ -1,0 +1,18 @@
+{
+  "name": "web-audio-api-demo",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "Hédic Guibert <guiberthedic@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "eslint": "^8.7.0",
+    "eslint-plugin-import": "^2.26.0",
+    "ts-loader": "^9.3.1",
+    "tslint": "^6.1.3",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+  }
+}

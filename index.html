@@ -4,12 +4,82 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="notesValuesMap.js"></script>
-    <script src="theme_notes.js"></script>
-    <script src="parser.js"></script>
-    <script src="index.js"></script>
+
+    <!-- Favicon taken from https://uxwing.com/. Thanks ! -->
+    <link rel="icon" type="image/png" href="public/images/favicon.svg">
+    <link rel="stylesheet" href="public/css/app.css">
+
+    <title>Javascript Web Audio API demo</title>
+
+    <meta name="description" content="A small demo website to show what you can do with the Javascript Web Audio API">
 </head>
 <body>
+    <header class="header">
+        <h2 class="main-heading">Play music thanks to Javascript</h2>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <div class="section intro">
+                <p>
+                    This is a tiny app that aims at giving a glimpse of what you could do with the Javascript&nbsp;Web&nbsp;Audio&nbsp;API.
+                    It will convert a music tablature and plays it in your browser.
+                </p>
+
+                <p>
+                    The only supported format comes from <a class="link" href="https://pianoletternotes.blogspot.com/">this blog</a>.
+                    Check out for a song you like, copy its tablature in the form down below, and click play :).
+                    We also pre selected a few songs if you just want to see how it sounds.
+                </p>
+
+                <p class="intro-warning">
+                    <span class="emphasize">WARNING</span>: We advise you to lower the volume, especially if you're using a headset or earphones. Some notes, oftenly very high ones
+                    when they are played along with some other notes, may produce <span class="emphasize">very</span> unpleasant sounds.
+                    <br>
+                    Our pre selected songs should not contain such notes, however some will still be dissonant.
+                </p>
+
+                <p>
+                    You may convert the audio track to JSON if you want to use it for yourself. If you want to learn more about it, you may read our article
+                    explaining how to use the Web Audio API to play music&nbsp;:
+                    <a class="link" href="">WIP</a>.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3 class="section-heading">Preset Songs</h3>
+                <div id="js-preset-songs" class="cards-container"></div>
+            </div>
+
+            <div class="section form-section">
+
+                <form method="post" id="js-form" class="form">
+                    <textarea class="textarea form-textarea" name="tablature" id="js-tablature" cols="35" rows="35"></textarea>
+                    <div class="form-buttons-container">
+                        <button class="form-button" id="js-play">Play it !</button>
+                        <button class="form-button" id="js-parse-input">Get form input as JSON</button>
+                        <button class="form-button" id="js-parse-current">Get current song as JSON</button>
+                    </div>
+                </form>
+
+                <div class="form-result">
+                    <textarea class="textarea form-result-textarea" name="json-output" id="js-json-output" cols="35" rows="35" disabled></textarea>
+                    <div class="form-buttons-container">
+                        <button class="form-button" id="js-copy">Copy to clipboard</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            Made with <span class="emphasize">a lot of fun</span> at <a class="link" href="https://jolicode.com/">JoliCode.com</a>
+        </div>
+    </footer>
+
+    <script src="./dist/src/index.js" type="module" defer></script>
 </body>
 </html>

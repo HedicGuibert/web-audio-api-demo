@@ -1,0 +1,47 @@
+.form-section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.textarea {
+    border: 2px solid var(--color-primary);
+    padding: 2rem;
+}
+
+.form-textarea {
+    text-align: center;
+}
+
+.form-buttons-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    margin: 1rem -5rem;
+    width: 75%;
+    margin: 1rem auto;
+}
+
+.form-button {
+    padding: .5rem;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--color-ternary);
+    color: #FFF;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all .3s;
+    margin: .5rem 0;
+}
+
+.has-error {
+    border: 2px solid var(--color-error);
+}
+
+.error-box {
+    text-align: center;
+    width: 75%;
+    margin: -4rem auto 2rem;
+    color: var(--color-error);
+    font-size: 1.3rem;
+}

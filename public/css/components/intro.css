@@ -1,0 +1,14 @@
+.intro p {
+    line-height: 1.8rem;
+    font-size: 1.2rem;
+    margin: .5rem auto;
+    width: 75%;
+}
+
+.intro .intro-warning {
+    margin: 1rem auto;
+    border: 2px solid var(--color-primary);
+    width: 80%;
+    padding: 1rem;
+    border-radius: 5px;
+}
