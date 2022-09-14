@@ -1,7 +1,9 @@
-# Welcome !
+# Welcome to the Javascript Web Audio API !
 
 This project is a small demo website that plays music with the Javascript Web Audio API.
-It simply aims at giving an idea of what you can do with the API.
+It simply aims at giving an idea of what you can do with the API. You may find it at the following address :
+
+https://hedicguibert.github.io/web-audio-api-demo/
 
 This website will parse tablatures taken from https://pianoletternotes.blogspot.com/ and play them in your browser.
 If you want to get the notes of the songs, you may get them as JSON. An article is being written on how to use these notes.
