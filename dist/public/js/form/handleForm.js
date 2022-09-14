@@ -50,7 +50,7 @@ const parseAsJson = (notes) => {
         if (jsonOutput.value) {
             navigator.clipboard.writeText(jsonOutput.value);
             copy.textContent = 'Copied!';
-            window.setTimeout(() => copy.textContent = 'Copy to clipbloard', 2000);
+            window.setTimeout(() => copy.textContent = 'Copy to clipboard', 2000);
         }
     });
 };

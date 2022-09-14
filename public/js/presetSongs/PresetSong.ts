@@ -44,7 +44,7 @@ export default class PresetSong {
 		if (!Player.isPlaying) {
 			button.textContent = 'Stop';
 
-			card.addEventListener('click', () => this.stopAction(button, card), { once: true });
+			card.addEventListener('click', () => this.stopAction(button, card), {once: true});
 
 			const playerResult = await Player.play(parse(this.#song.tablature));
 
@@ -61,7 +61,7 @@ export default class PresetSong {
 
 			button.textContent = 'Play this song';
 
-			card.addEventListener('click', () => this.playAction(button, card), { once: true });
+			card.addEventListener('click', () => this.playAction(button, card), {once: true});
 		}
 	}
 }
