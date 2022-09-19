@@ -18,7 +18,7 @@ const playMusic = async (button, tablature) => {
         }
         const parsedMusic = parse(musicToPlay);
         if (parsedMusic.length < 10) {
-            button.textContent = 'Play it !';
+            button.textContent = 'Play it!';
             button.addEventListener('click', playMusicListener, { once: true });
             return addFormError(tablature);
         }
@@ -29,14 +29,14 @@ const playMusic = async (button, tablature) => {
             }
         }
         if (playerResult.hasFinishedPlaying && !playerResult.hasErrors) {
-            button.textContent = 'Play it !';
+            button.textContent = 'Play it!';
             button.addEventListener('click', () => playMusicListener, { once: true });
         }
     }
 };
 const stopMusic = (button, playMusicListener) => {
     Player.stop();
-    button.textContent = 'Play it !';
+    button.textContent = 'Play it!';
     button.addEventListener('click', playMusicListener, { once: true });
 };
 const parseAsJson = (notes) => {

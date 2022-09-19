@@ -16,7 +16,7 @@ class Player {
         await this.#playNote(new Note('---').keys);
         for (const note of notes) {
             if (!this.#isPlaying) {
-                return new PlayerResult();
+                return new PlayerResult(false, true);
             }
             try {
                 await this.#playNote(note.keys);
