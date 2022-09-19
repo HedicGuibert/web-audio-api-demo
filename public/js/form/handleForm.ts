@@ -28,7 +28,7 @@ const playMusic = async (button: HTMLButtonElement, tablature: HTMLTextAreaEleme
 
 		// Prevent a few weird bugs where the parser would return some broken notes
 		if (parsedMusic.length < 10) {
-			button.textContent = 'Play it !';
+			button.textContent = 'Play it!';
 			button.addEventListener('click', playMusicListener, {once: true});
 
 			return addFormError(tablature);
@@ -43,7 +43,7 @@ const playMusic = async (button: HTMLButtonElement, tablature: HTMLTextAreaEleme
 		}
 
 		if (playerResult.hasFinishedPlaying && !playerResult.hasErrors) {
-			button.textContent = 'Play it !';
+			button.textContent = 'Play it!';
 			button.addEventListener('click', () => playMusicListener, {once: true});
 		}
 	}
@@ -52,7 +52,7 @@ const playMusic = async (button: HTMLButtonElement, tablature: HTMLTextAreaEleme
 const stopMusic = (button: HTMLButtonElement, playMusicListener: EventListener) => {
 	Player.stop();
 
-	button.textContent = 'Play it !';
+	button.textContent = 'Play it!';
 	button.addEventListener('click', playMusicListener, {once: true});
 };
 

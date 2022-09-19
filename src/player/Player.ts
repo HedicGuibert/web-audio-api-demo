@@ -26,7 +26,7 @@ class Player {
 
 		for (const note of notes) {
 			if (!this.#isPlaying) {
-				return new PlayerResult();
+				return new PlayerResult(false, true);
 			}
 
 			try {

@@ -34,7 +34,7 @@ export default class PresetSong {
 		const button = document.createElement('button');
 		button.textContent = 'Play this song';
 		button.classList.add('card-button');
-		card.addEventListener('click', () => this.playAction(button, card), {once: true});
+		card.addEventListener('click', () => this.playAction(button, card));
 		contentContainer.appendChild(button);
 
 		return card;
